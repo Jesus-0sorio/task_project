@@ -1,10 +1,15 @@
 import Logo from "../../assets/Logo.svg";
 import LogoGroup from "../../assets/LogoGroups.svg";
+import { useState } from "react";
 
 export const Login = () => {
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <section className="w-screen h-screen overflow-y-hidden lg:grid lg:grid-cols-2">
-      <article className="h-full w-full flex flex-col px-5  xl:px-[8.75rem] justify-center gap-8">
+      <article className="h-full w-full flex flex-col px-5 xl:px-[8.75rem] justify-center gap-8">
         <img src={Logo} className="w-12" alt="logo" />
         <p className="text-[2rem] font-semibold">Masuk ke akun kamu</p>
         <p className="font-normal text-[#4B5563]">
@@ -19,7 +24,9 @@ export const Login = () => {
             <input
               className="py-5 px-10 bg-[#F3F4F6] text-black"
               type="email"
-              value="saipul@gmail.com"
+              value={email}
+              placeholder="saipul@gmail.com"
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="flex flex-col gap-[0.625rem]">
@@ -34,7 +41,9 @@ export const Login = () => {
             <input
               className="py-5 px-10 bg-[#F3F4F6] text-black"
               type="password"
-              value="⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
+              value={password}
+              placeholder="********"
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <div className="flex align-middle gap-[0.938rem]">
