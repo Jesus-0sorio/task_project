@@ -3,8 +3,8 @@ import LogoGroup from "../../assets/LogoGroups.svg";
 
 export const Login = () => {
   return (
-    <section className="w-screen h-screen grid grid-cols-2">
-      <article className="h-full w-full flex flex-col py-24 px-[8.75rem] justify-center gap-8">
+    <section className="w-screen h-screen overflow-y-hidden lg:grid lg:grid-cols-2">
+      <article className="h-full w-full flex flex-col px-5  xl:px-[8.75rem] justify-center gap-8">
         <img src={Logo} className="w-12" alt="logo" />
         <p className="text-[2rem] font-semibold">Masuk ke akun kamu</p>
         <p className="font-normal text-[#4B5563]">
@@ -59,11 +59,13 @@ export const Login = () => {
           </span>
         </p>
       </article>
-      <article className="bg-[url('/RigthSide.svg')] bg-no-repeat bg-cover flex w-full justify-center  flex-col">
+      <article className="hidden lg:flex lg:flex-col bg-[url('/RigthSide.svg')] bg-no-repeat bg-cover w-full justify-center">
         <img className="w-full" src={LogoGroup} alt="" />
-        <div className="w-[537px] self-center text-white">
-          <p className="text-sm font-semibold opacity-60 mb-[10px]">NAMANYAJUGABELAJAR.IO</p>
-          <p className="text-[28px]">
+        <div className="lg:w-[26rem] xl:w-[537px] self-center text-white">
+          <p className="text-sm font-semibold opacity-60 mb-[10px]">
+            NAMANYAJUGABELAJAR.IO
+          </p>
+          <p className="md:text-2xl xl:text-[28px]">
             Belajar secara online semakin mudah – tetep belajar walaupun pake
             kuota dari Kemendikbud hehe~
           </p>
