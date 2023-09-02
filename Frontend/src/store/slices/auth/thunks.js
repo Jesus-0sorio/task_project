@@ -1,6 +1,6 @@
 import { api } from "../../../config/axios";
 
-import { loginFailed, loginSuccess } from "../authSlice";
+import { loginFailed, loginSuccess } from "./authSlice";
 import { startLoading, stopLoading } from "../loadingSlice";
 
 export const login =
