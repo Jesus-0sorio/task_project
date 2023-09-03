@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Back-Proyecto\\Back-Proyecto\\Back-Proyecto.csproj": {}
+    "D:\\task_project\\Back-Proyecto\\Back-Proyecto\\Back-Proyecto.csproj": {}
   },
   "projects": {
-    "D:\\Back-Proyecto\\Back-Proyecto\\Back-Proyecto.csproj": {
+    "D:\\task_project\\Back-Proyecto\\Back-Proyecto\\Back-Proyecto.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Back-Proyecto\\Back-Proyecto\\Back-Proyecto.csproj",
+        "projectUniqueName": "D:\\task_project\\Back-Proyecto\\Back-Proyecto\\Back-Proyecto.csproj",
         "projectName": "Back-Proyecto",
-        "projectPath": "D:\\Back-Proyecto\\Back-Proyecto\\Back-Proyecto.csproj",
+        "projectPath": "D:\\task_project\\Back-Proyecto\\Back-Proyecto\\Back-Proyecto.csproj",
         "packagesPath": "C:\\Users\\Hagav\\.nuget\\packages\\",
-        "outputPath": "D:\\Back-Proyecto\\Back-Proyecto\\obj\\",
+        "outputPath": "D:\\task_project\\Back-Proyecto\\Back-Proyecto\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Hagav\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -44,6 +44,10 @@
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[6.0.21, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.10, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",

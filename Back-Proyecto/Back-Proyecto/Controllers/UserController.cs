@@ -1,23 +1,27 @@
 ﻿using Back_Proyecto.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+
 using Newtonsoft.Json;
-using System.Data;
+using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+
 
 namespace Back_Proyecto.Controllers
 {
     [ApiController]
     [Route("user")]
-    public class UsuarioController : ControllerBase
+    public class UserController : ControllerBase
     {
-        
-        public IConfiguration _configuration;
-        public UsuarioController(IConfiguration configuration) 
+        private readonly MyDbContext _myDbContext;
+        private readonly IConfiguration _configuration;
+
+        public UserController(MyDbContext myDbContext, IConfiguration configuration)
         {
-            _configuration= configuration;
+            _myDbContext = myDbContext;
+            _configuration = configuration;
         }
 
         [HttpPost]
@@ -29,18 +33,18 @@ namespace Back_Proyecto.Controllers
             string email = data.email.ToString();
             string password = data.password.ToString();
 
-            Usuario usuario = Usuario.DB().Where(x => x.email == email && x.password == password).FirstOrDefault();
+            User user = _myDbContext.User.FirstOrDefault(x => x.email == email && x.password == password);
 
-            if(usuario == null)
+            if (user == null)
             {
                 return new
                 {
                     success = false,
-                    message = "Credenciales son incorrectas ",
+                    message = "Credenciales son incorrectas",
                     result = ""
                 };
-                 
             }
+
             var jwt = _configuration.GetSection("Jwt").Get<Jwt>();
 
             var claims = new[]
@@ -48,8 +52,8 @@ namespace Back_Proyecto.Controllers
                 new Claim(JwtRegisteredClaimNames.Sub, jwt.Subject),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
-                new Claim ("id", usuario.IdUsuario),
-                 new Claim ("email", usuario.email),
+                new Claim ("id", user.id.ToString()), // Cambiado a minúsculas
+                new Claim ("email", user.email), // Cambiado a minúsculas
             };
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwt.Key));
             var signIn = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
