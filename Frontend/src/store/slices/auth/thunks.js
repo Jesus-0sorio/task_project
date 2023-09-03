@@ -8,11 +8,13 @@ export const login =
   async (dispatch) => {
     dispatch(startLoading());
     try {
-      const { data } = await api.post("/auth/login", { email, password });
-      window.localStorage.setItem("token", data.access_token);
-      window.localStorage.setItem("user", JSON.stringify(data.user));
-      dispatch(loginSuccess(data));
-      window.location.reload();
+      const { data } = await api.post("/user/login", { email, password });
+      if (data.success) {
+        window.localStorage.setItem("token", data.token);
+        dispatch(loginSuccess(data));
+      } else {
+        dispatch(loginFailed(data.message));
+      }
     } catch (error) {
       dispatch(loginFailed(error.message));
     } finally {

@@ -13,11 +13,11 @@ export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = async (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
     if (!email || !password) console.log("email or password is empty");
     try {
-      await dispatch(login({ email, password }));
+      dispatch(login({ email, password }));
     } catch (err) {
       console.log(err);
     }
