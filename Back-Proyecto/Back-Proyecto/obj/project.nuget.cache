@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "GJ/UfiNrnueDV7N1IAoHVDRnCufhT1tPUEVnHx54OIqABUtpkTf0TsiO+IWqjwoaH1r9M3YQTDXHUBPfSZ9utA==",
+  "dgSpecHash": "s4E275chrrabcwF7YX8G6zHLxPa2UBcRbcR+TNLykRePPgbOlxIi66hAFETsceSdrdHPmY/LwSONOcE5uTkVRQ==",
   "success": true,
   "projectFilePath": "D:\\task_project\\Back-Proyecto\\Back-Proyecto\\Back-Proyecto.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Hagav\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Hagav\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
+    "C:\\Users\\Hagav\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\Hagav\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Hagav\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.21\\microsoft.aspnetcore.authentication.jwtbearer.6.0.21.nupkg.sha512",
     "C:\\Users\\Hagav\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",

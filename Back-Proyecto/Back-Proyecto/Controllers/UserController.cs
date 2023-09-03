@@ -33,7 +33,7 @@ namespace Back_Proyecto.Controllers
             string email = data.email.ToString();
             string password = data.password.ToString();
 
-            User user = _myDbContext.User.FirstOrDefault(x => x.email == email && x.password == password);
+            User user = _myDbContext.User.FirstOrDefault(x => x.email == email);
 
             if (user == null)
             {
@@ -45,32 +45,102 @@ namespace Back_Proyecto.Controllers
                 };
             }
 
-            var jwt = _configuration.GetSection("Jwt").Get<Jwt>();
-
-            var claims = new[]
+            if (BCrypt.Net.BCrypt.Verify(password, user.password))
             {
-                new Claim(JwtRegisteredClaimNames.Sub, jwt.Subject),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
-                new Claim ("id", user.id.ToString()), // Cambiado a minúsculas
-                new Claim ("email", user.email), // Cambiado a minúsculas
-            };
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwt.Key));
-            var signIn = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+                var jwt = _configuration.GetSection("Jwt").Get<Jwt>();
 
-            var token = new JwtSecurityToken(
-                 jwt.Issuer,
-                 jwt.Audience,
-                 claims,
-                 expires: DateTime.Now.AddMinutes(4),
-                 signingCredentials: signIn
+                var claims = new[]
+                {
+            new Claim(JwtRegisteredClaimNames.Sub, jwt.Subject),
+            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
+            new Claim("id", user.id.ToString()), // Cambiado a minúsculas
+            new Claim("email", user.email), // Cambiado a minúsculas
+        };
+                var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwt.Key));
+                var signIn = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+                var token = new JwtSecurityToken(
+                     jwt.Issuer,
+                     jwt.Audience,
+                     claims,
+                     expires: DateTime.Now.AddMinutes(4),
+                     signingCredentials: signIn
                 );
-            return new
+                return new
+                {
+                    success = true,
+                    message = "exito",
+                    result = new JwtSecurityTokenHandler().WriteToken(token)
+                };
+            }
+            else
             {
-                success = true,
-                message = "exito",
-                result = new JwtSecurityTokenHandler().WriteToken(token)
-            };
+                return new
+                {
+                    success = false,
+                    message = "Credenciales son incorrectas",
+                    result = ""
+                };
+            }
         }
+
+        [HttpPost]
+        [Route("register")]
+        public async Task<IActionResult> Registrar([FromBody] Registro registro)
+        {
+            try
+            {
+               
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                if (_myDbContext.User.Any(x => x.email == registro.email))
+                {
+                    return BadRequest(new
+                    {
+                        success = false,
+                        message = "El correo electrónico ya está en uso.",
+                        result = ""
+                    });
+                }
+
+           
+                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(registro.password);
+
+             
+                var nuevoUsuario = new User
+                {
+                    email = registro.email,
+                    password = hashedPassword 
+                };
+
+                _myDbContext.User.Add(nuevoUsuario);
+                await _myDbContext.SaveChangesAsync();
+
+              
+                return Ok(new
+                {
+                    success = true,
+                    message = "Usuario registrado exitosamente.",
+                    result = ""
+                });
+            }
+            catch (Exception ex)
+            {
+              
+
+                return StatusCode(500, new
+                {
+                    success = false,
+                    message = "Ocurrió un error durante el registro.",
+                    result = ex.Message
+                });
+            }
+
+        }
+
     }
 }
