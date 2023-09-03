@@ -47,6 +47,7 @@ export const Login = () => {
               value={email}
               placeholder="saipul@gmail.com"
               onChange={(e) => setEmail(e.target.value)}
+              required
             />
           </div>
           <div className="flex flex-col gap-[0.625rem]">
@@ -67,6 +68,7 @@ export const Login = () => {
               value={password}
               placeholder="********"
               onChange={(e) => setPassword(e.target.value)}
+              required
             />
           </div>
           <div className="flex align-middle gap-[0.938rem]">
