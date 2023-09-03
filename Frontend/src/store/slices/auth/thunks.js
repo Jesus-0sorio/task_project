@@ -10,13 +10,11 @@ export const login =
     try {
       const { data } = await api.post("/user/login", { email, password });
       if (data.success) {
-        window.localStorage.setItem("token", data.token);
+        window.localStorage.setItem("token", data.result);
         dispatch(loginSuccess(data));
       } else {
         dispatch(loginFailed(data.message));
       }
-    } catch (error) {
-      dispatch(loginFailed(error.message));
     } finally {
       dispatch(stopLoading());
     }

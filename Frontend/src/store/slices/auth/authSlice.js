@@ -20,7 +20,7 @@ export const authSlice = createSlice({
       state.isAuthenticating = false;
       state.user = null;
       state.token = null;
-      state.error = action.payload.error;
+      state.error = action.payload;
     },
   },
 });

@@ -8,7 +8,7 @@ import { login } from "../../store/slices/auth/thunks";
 export const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { isAuthenticating } = useSelector((state) => state.user);
+  const { isAuthenticating, error  } = useSelector((state) => state.user);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -88,7 +88,13 @@ export const Login = () => {
             Iniciar sesión
           </button>
         </form>
-        <div className="mb-[35px]"></div>
+        <div className="mb-[35px]">
+          {error && (
+            <p className="text-center text-red-500 font-bold pt-4">
+              Las credenciales son incorrectas, verifica si ya estas registrado
+            </p>
+          )}
+        </div>
         <p className="text-[#4B5563] text-center font-semibold">
           ¿Aún no tiene cuenta?{" "}
           <Link to="/register" className="text-[#4F46E5] font-semibold">
