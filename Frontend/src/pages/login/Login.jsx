@@ -29,13 +29,15 @@ export const Login = () => {
 
   return (
     <section className="w-screen h-screen overflow-y-hidden lg:grid lg:grid-cols-2">
-      <article className="h-full w-full flex flex-col px-5 xl:px-[8.75rem] justify-center gap-8">
-        <img src={Logo} className="w-12" alt="logo" />
+      <article className="h-full w-full flex flex-col px-5 xl:px-[8.75rem] justify-center gap-[0.625rem]">
+        <img src={Logo} className="w-[60px]" alt="logo" />
+        <div className="mb-[35px]"></div>
         <p className="text-[2rem] font-semibold">Accede a tu cuenta</p>
         <p className="font-normal text-[#4B5563]">
           Aprende gratis en Namanyajugabelajar.io, ¡y empieza la carrera con la
           que llevas soñando desde que eras un embrión!
         </p>
+        <div className="mb-[25px]"></div>
         <form className="flex flex-col gap-[1.875rem]" onSubmit={handleLogin}>
           <div className="flex flex-col gap-[0.625rem]">
             <label className="font-bold" htmlFor="">
@@ -73,7 +75,7 @@ export const Login = () => {
           </div>
           <div className="flex align-middle gap-[0.938rem]">
             <input
-              className="w-[25px] bg-[#F3F4F6] rounded-[0.188rem] border border-transparent "
+              className="w-[25px] bg-[#F3F4F6] rounded-[0.188rem] border border-transparent"
               type="checkbox"
               name=""
               id=""
@@ -86,7 +88,8 @@ export const Login = () => {
             Iniciar sesión
           </button>
         </form>
-        <p className="text-[#4B5563] text-center font-normal">
+        <div className="mb-[35px]"></div>
+        <p className="text-[#4B5563] text-center font-semibold">
           ¿Aún no tiene cuenta?{" "}
           <Link to="/register" className="text-[#4F46E5] font-semibold">
             Regístrese ahora
