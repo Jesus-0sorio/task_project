@@ -2,6 +2,11 @@
 
 Proyecto frontend "Task Project" de la asignatura de Proyecto Informático.
 
+## 🔗 Clonar repositorio
+Clonar el repositorio:
+```sh
+git clone https://github.com/Jesus-0sorio/task_project.git
+```
 ## ⚙️ Set up 
 Instalar dependecias:
 ```sh
