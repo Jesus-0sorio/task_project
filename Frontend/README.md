@@ -1,8 +1,27 @@
-# React + Vite
+<h1 align="center">Task Project - Frontend</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Proyecto frontend "Task Project" de la asignatura de Proyecto Informático.
 
-Currently, two official plugins are available:
+## ⚙️ Set up 
+Instalar dependecias:
+```sh
+npm install
+```
+Ejecutar el proyecto:
+```sh
+npm run dev
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 💼 Produccion
+Construir para podruccion:
+```sh
+npm run build
+```
+
+## 🛠️ Construido con
+- [React](https://reactjs.org/) - [Vite](https://vitejs.dev/guide/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+- [React Router](https://reactrouter.com/en/main)
+- [Axios](https://axios-http.com/docs/intro)
+- [Dotenv](https://www.npmjs.com/package/dotenv)
+- [TailwindCSS](https://tailwindcss.com/)
