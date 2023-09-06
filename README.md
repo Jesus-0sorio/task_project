@@ -46,4 +46,4 @@
 * Apuntar a una alta disponibilidad para garantizar que los usuarios puedan iniciar sesión en cualquier momento.
 
 # Ejecución del proyecto:
-la documentación respectiva correspondiente al front-end y back-end se encuentra en sus respectivos repos
+La documentación de ejecución se encuentra en las respectivas carpetas correspondientes al front-end y back-end
