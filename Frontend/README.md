@@ -7,11 +7,6 @@ Asegurate de tener instalado:
 - Node.js (v18.13.0 o superior)
 - npm (v9.8.1 o superior)
 
-## 🔗 Clonar repositorio
-Clonar el repositorio:
-```sh
-git clone https://github.com/Jesus-0sorio/task_project.git
-```
 ## ⚙️ Set up 
 Instalar dependecias:
 ```sh
