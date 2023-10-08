@@ -499,7 +499,7 @@ MigrationBackup/
 
 # Files bin and obj Back-Proyecto
 bin/
-obj/
+obj/**
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
