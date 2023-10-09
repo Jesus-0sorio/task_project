@@ -16,9 +16,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/reset-password" element={<ResetPassword />} />
-        <Route element={<ProtectedRouter />}>
-          <Route path="/" element={<Home />} />
-        </Route>
+        {/* <Route element={<ProtectedRouter />}> */}
+        <Route path="/" element={<Home />} />
+        {/* </Route> */}
       </Routes>
     </BrowserRouter>
   );

@@ -9,6 +9,7 @@ export const login = ({ email, password }) => async (dispatch) => {
     if (data.success) {
       window.localStorage.setItem('token', data.result);
       dispatch(loginSuccess(data));
+      window.location.reload();
     } else {
       dispatch(loginFailed(data.message));
       throw new Error(data.message);
