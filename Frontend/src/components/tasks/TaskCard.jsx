@@ -4,8 +4,9 @@ import { PRIORITIES, STATUS } from '../../common/contants';
 import { Modal } from '../shared/Modal';
 import { DeleteModal } from './DeleteModal';
 import { assignmentsService } from '../../services/assigementService';
+import pencil from '../../assets/pencil.svg';
 
-export function TaskCard({ task }) {
+export function TaskCard({ task, toogleEdit, getOldTask }) {
   const [isActive, setIsActive] = useState(false);
 
   const priorityStyles = () => {
@@ -26,6 +27,11 @@ export function TaskCard({ task }) {
       return 'bg-green-400';
     }
     return '';
+  };
+
+  const handleEdit = () => {
+    toogleEdit();
+    getOldTask(task);
   };
 
   const toogle = () => {
@@ -53,6 +59,9 @@ export function TaskCard({ task }) {
               {' '}
               <span className={`p-1.5 rounded-md ${priorityStyles()}`}>{task.priority}</span>
             </p>
+            <button onClick={handleEdit} type="button">
+              <img src={pencil} alt="" className="w-7 text-center" />
+            </button>
           </div>
           <p className="text-xl font-medium text-black">
             {task.title}
@@ -85,4 +94,6 @@ TaskCard.propTypes = {
     state: PropTypes.string,
     id: PropTypes.number,
   }).isRequired,
+  toogleEdit: PropTypes.func.isRequired,
+  getOldTask: PropTypes.func.isRequired,
 };
