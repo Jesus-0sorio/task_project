@@ -29,7 +29,7 @@ export function Home() {
   return (
     <>
       <Navbar toogle={toogle} />
-      <div className="h-auto w-full gap-4 p-3 grid grid-flow-col auto-cols-max">
+      <div className="h-full w-full gap-4 p-3 grid grid-cols-1 justify-items-center lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
         {task.length > 0 && task?.map((item) => (
           <TaskCard key={item.id} task={item} />
         ))}
