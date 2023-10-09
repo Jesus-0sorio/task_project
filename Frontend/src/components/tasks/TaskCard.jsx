@@ -39,7 +39,8 @@ export function TaskCard({ task, toogleEdit, getOldTask }) {
   };
 
   const completeTask = async () => {
-    const newTask = { ...task, state: 'Terminado' };
+    const newState = task.state === STATUS.EN_PROGRESO ? STATUS.TERMINADO : STATUS.EN_PROGRESO;
+    const newTask = { ...task, state: newState };
     await assignmentsService.update(newTask.id, newTask);
     window.location.reload();
   };

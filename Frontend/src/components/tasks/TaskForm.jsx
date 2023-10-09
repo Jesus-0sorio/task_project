@@ -132,7 +132,6 @@ export function TaskForm({ isEdited, oldTask }) {
 }
 
 TaskForm.propTypes = {
-  isEdited: PropTypes.bool,
   oldTask: PropTypes.shape({
     title: PropTypes.string,
     description: PropTypes.string,
