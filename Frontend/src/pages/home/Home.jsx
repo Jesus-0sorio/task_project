@@ -24,13 +24,15 @@ export function Home() {
       setTask(data);
     };
     getTask();
-  }, [isActive]);
+  }, []);
 
   return (
     <>
       <Navbar toogle={toogle} />
-      <div className="h-auto p-3">
-        <TaskCard task={task} />
+      <div className="h-auto w-full gap-4 p-3 grid grid-flow-col auto-cols-max">
+        {task.length > 0 && task?.map((item) => (
+          <TaskCard key={item.id} task={item} />
+        ))}
       </div>
 
       <Modal active={isActive} toogle={toogle}>

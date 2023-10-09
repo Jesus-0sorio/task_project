@@ -5,6 +5,6 @@ export const PRIORITIES = {
 };
 
 export const STATUS = {
-  EN_PROGRESO: 'En progreso',
+  EN_PROGRESO: 'En proceso',
   COMPLETADA: 'Completada',
 };

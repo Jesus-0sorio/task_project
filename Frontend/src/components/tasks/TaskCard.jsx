@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { PRIORITIES, STATUS } from '../../common/contants';
 import { Modal } from '../shared/Modal';
 import { DeleteModal } from './DeleteModal';
+import { assignmentsService } from '../../services/assigementService';
 
 export function TaskCard({ task }) {
   const [isActive, setIsActive] = useState(false);
@@ -26,9 +27,17 @@ export function TaskCard({ task }) {
     }
     return '';
   };
+
   const toogle = () => {
     setIsActive(!isActive);
   };
+
+  const completeTask = async () => {
+    const newTask = { ...task, state: STATUS.COMPLETADA };
+    await assignmentsService.update(newTask.id, newTask);
+    window.location.reload();
+  };
+
   return (
     <div className="flex flex-col bg-white border border-gray-100 rounded-lg shadow-lg overflow-hidden w-96">
       <div className="flex-1 bg-white p-6 flex flex-col justify-between">
@@ -53,7 +62,7 @@ export function TaskCard({ task }) {
           </p>
         </div>
         <div className="flex justify-center gap-6">
-          <button type="button" className="bg-base text-white p-2 rounded-md w-32">
+          <button onClick={completeTask} type="button" className="bg-base text-white p-2 rounded-md w-32">
             Completar
           </button>
           <button onClick={toogle} type="button" className="bg-warn text-white p-2 rounded-md w-32">
@@ -70,9 +79,10 @@ export function TaskCard({ task }) {
 
 TaskCard.propTypes = {
   task: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    priority: PropTypes.string.isRequired,
-    state: PropTypes.string.isRequired,
+    title: PropTypes.string,
+    description: PropTypes.string,
+    priority: PropTypes.string,
+    state: PropTypes.string,
+    id: PropTypes.number,
   }).isRequired,
 };

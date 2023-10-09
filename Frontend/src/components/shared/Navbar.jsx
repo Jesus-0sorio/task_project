@@ -11,7 +11,7 @@ export function Navbar({ toogle }) {
   return (
     <nav className="w-full px-3 items-center justify-between border-b-gray-600 border-b h-14 flex">
       <div className="flex items-center">
-        <h1 className="text-[25px] text-base text-xl">Task</h1>
+        <h1 className="text-[25px] text-base text-xl">Tarea</h1>
       </div>
       <div className="flex gap-2">
         <button
@@ -19,7 +19,7 @@ export function Navbar({ toogle }) {
           onClick={toogle}
           className="border border-base p-1.5 rounded-lg text-base hover:text-white hover:bg-base transition-all duration-400 "
         >
-          Crear todo
+          Crear tarea
         </button>
         <button
           type="button"

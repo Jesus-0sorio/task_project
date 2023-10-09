@@ -5,6 +5,7 @@ import { assignmentsService } from '../../services/assigementService';
 export function DeleteModal({ titleTask, taskId }) {
   const deleteTask = async () => {
     await assignmentsService.delete(taskId);
+    window.location.reload();
   };
 
   return (
@@ -22,5 +23,5 @@ export function DeleteModal({ titleTask, taskId }) {
 
 DeleteModal.propTypes = {
   titleTask: PropTypes.string.isRequired,
-  taskId: PropTypes.string.isRequired,
+  taskId: PropTypes.number.isRequired,
 };
