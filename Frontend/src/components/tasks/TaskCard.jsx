@@ -21,12 +21,11 @@ export function TaskCard({ task }) {
   const stateStyles = () => {
     if (task.state === STATUS.EN_PROGRESO) {
       return 'bg-gray-400';
-    } if (task.state === STATUS.COMPLETADO) {
+    } if (task.state === STATUS.COMPLETADA) {
       return 'bg-green-400';
     }
     return '';
   };
-
   const toogle = () => {
     setIsActive(!isActive);
   };
@@ -38,7 +37,7 @@ export function TaskCard({ task }) {
             <p className="text-sm">
               Estado:
               {' '}
-              <span className={`p-1.5 rounded-md ${stateStyles()}`}>En progreso</span>
+              <span className={`p-1.5 rounded-md ${stateStyles()}`}>{task.state}</span>
             </p>
             <p className="text-black text-sm">
               Prioridad:
@@ -63,7 +62,7 @@ export function TaskCard({ task }) {
         </div>
       </div>
       <Modal toogle={toogle} active={isActive}>
-        <DeleteModal titleTask={task.title} />
+        <DeleteModal titleTask={task.title} taskId={task.id} />
       </Modal>
     </div>
   );

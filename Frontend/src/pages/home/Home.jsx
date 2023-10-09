@@ -8,6 +8,7 @@ import { assignmentsService } from '../../services/assigementService';
 export function Home() {
   const [isActive, setIsActive] = useState(false);
   const [task, setTask] = useState({
+    id: '1',
     title: 'Comprar leche',
     description: 'tengo que ir al supermercado para comprar leche, huevos, pan, frutas para le jugo, mantequellia, arroz, pasta, carne, pollo, pescado, y verduras',
     priority: 'Alta',
@@ -17,14 +18,13 @@ export function Home() {
     setIsActive(!isActive);
   };
 
-  // useEffect(() => {
-  //   const getTask = async () => {
-  //     const data = await assignmentsService.getAll();
-  //     setTask(data);
-  //   };
-  //   getTask();
-  //   console.log(task);
-  // }, [isActive]);
+  useEffect(() => {
+    const getTask = async () => {
+      const data = await assignmentsService.getAll();
+      setTask(data);
+    };
+    getTask();
+  }, [isActive]);
 
   return (
     <>

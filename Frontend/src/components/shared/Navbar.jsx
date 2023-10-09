@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Navigate } from 'react-router-dom';
 
 export function Navbar({ toogle }) {
   const logout = () => {
     localStorage.removeItem('token');
-      <Navigate to="/login" replace />;
+    localStorage.removeItem('userId');
+    window.location.reload();
   };
 
   return (
