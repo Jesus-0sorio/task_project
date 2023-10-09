@@ -10,11 +10,13 @@ namespace Back_Proyecto.Models
         public int id { get; set; }
         [Required]
         public string title { get; set; }
-        [Required]
-        public string state { get; set; }
+        public string state { get; set; } = "En proceso";
         [Required]
         public string description { get; set;}
         [Required]
         public string priority { get; set; }
+
+        public int userid { get; set; }
+        public Users? User { get; set; }
     }
 }

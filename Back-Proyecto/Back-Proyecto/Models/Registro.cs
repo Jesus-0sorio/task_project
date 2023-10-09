@@ -4,10 +4,6 @@ namespace Back_Proyecto.Models
 {
     public class Registro
     {
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
         [Required]
         public string email { get; set; }
 

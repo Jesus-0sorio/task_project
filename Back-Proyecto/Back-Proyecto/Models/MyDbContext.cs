@@ -8,8 +8,7 @@ namespace Back_Proyecto.Models
         {
 
         }
-
-        public DbSet<User> User { get; set; }
+        public DbSet<Users> Users { get; set; }
         public DbSet<Assignment> Assignment { get; set; }
     }
 }
