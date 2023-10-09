@@ -12,9 +12,9 @@ export function TaskCard({ task }) {
     if (task.priority === PRIORITIES.ALTA) {
       return 'bg-warn text-white';
     } if (task.priority === PRIORITIES.MEDIA) {
-      return 'bg-[#8FBC8B] text-white';
+      return 'bg-[#8FBC8B] textbalck';
     } if (task.priority === PRIORITIES.BAJA) {
-      return 'bg-[#D3D3D3] text-white';
+      return 'bg-[#D3D3D3] text-balck';
     }
     return '';
   };
@@ -22,7 +22,7 @@ export function TaskCard({ task }) {
   const stateStyles = () => {
     if (task.state === STATUS.EN_PROGRESO) {
       return 'bg-gray-400';
-    } if (task.state === STATUS.COMPLETADA) {
+    } if (task.state === STATUS.TERMINADO) {
       return 'bg-green-400';
     }
     return '';
@@ -33,7 +33,7 @@ export function TaskCard({ task }) {
   };
 
   const completeTask = async () => {
-    const newTask = { ...task, state: STATUS.COMPLETADA };
+    const newTask = { ...task, state: 'Terminado' };
     await assignmentsService.update(newTask.id, newTask);
     window.location.reload();
   };

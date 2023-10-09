@@ -22,6 +22,7 @@ export function TaskForm() {
     setTitle('');
     setDescription('');
     setPriority('Media');
+    window.location.reload();
   };
 
   return (
