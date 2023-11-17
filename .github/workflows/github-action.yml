@@ -38,8 +38,8 @@ jobs:
         with:
           app-name: 'api-task-project'
           slot-name: 'production'
+          package: .
           publish-profile: ${{ secrets.AzureAppService_PublishProfile }}
-          package: "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}"
 
   build-react-app:
     runs-on: ubuntu-latest

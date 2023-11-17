@@ -49,7 +49,8 @@ export function Home() {
             task={item}
             isEdited
             toogleEdit={toogleEdit}
-            getOldTask={getOldTask} />
+            getOldTask={getOldTask}
+          />
         ))}
       </div>
 
