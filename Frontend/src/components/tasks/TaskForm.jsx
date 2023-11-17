@@ -137,4 +137,5 @@ TaskForm.propTypes = {
     description: PropTypes.string,
     priority: PropTypes.string,
   }).isRequired,
+  isEdited: PropTypes.bool.isRequired,
 };

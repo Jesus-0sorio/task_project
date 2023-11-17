@@ -29,7 +29,7 @@ jobs:
         working-directory: ./Back-Proyecto
 
       - name: Publish
-        run: dotnet publish ./Back-Proyecto/Back-Proyecto.sln --configuration Release --no-build --output '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
+        run: dotnet publish ./Back-Proyecto.sln --configuration Release --no-build --output '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
         working-directory: ./Back-Proyecto
 
       - name: Deploy to Azure Web App
