@@ -31,12 +31,15 @@ jobs:
         run: dotnet build ./Back-Proyecto.sln --configuration Release --no-restore
         working-directory: ./Back-Proyecto
 
+      - name: Publish
+        run: dotnet publish ./Back-Proyecto.sln --configuration Release --no-build --output '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
+        working-directory: ./Back-Proyecto
+
+      - name: List contents of the publish directory
+        run: ls -R ./publish
+
       - name: List contents of the dist directory
         run: ls -R ./dist
-
-      # - name: Publish
-      #   run: dotnet publish ./Back-Proyecto.sln --configuration Release --no-build --output '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
-      #   working-directory: ./Back-Proyecto
 
       # - name: Deploy to Azure Web App
       #   id: deploy-to-webapp
@@ -77,4 +80,4 @@ jobs:
       #     action: "upload"
       #     app_location: "./Frontend"
       #     output_location: "./dist"
-
+  
