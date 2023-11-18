@@ -35,13 +35,21 @@ jobs:
         run: dotnet publish ./Back-Proyecto.sln --configuration Release --no-build --output './publish'
         working-directory: ./Back-Proyecto
 
-      - name: Deploy to Azure Web App
-        id: deploy-to-webapp
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: ${{ env.API_NAME }}
-          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
-          publish-profile: ${{ secrets.AzureAppService_PublishProfile }}
+      - name: List contents of the publish directory
+        run: ls -R ./publish
+        working-directory: ./Back-Proyecto
+
+      - name: List contents of the dist directory
+        run: ls -R ./dist
+        working-directory: ./Back-Proyecto
+
+      # - name: Deploy to Azure Web App
+      #   id: deploy-to-webapp
+      #   uses: azure/webapps-deploy@v2
+      #   with:
+      #     app-name: ${{ env.API_NAME }}
+      #     package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+      #     publish-profile: ${{ secrets.AzureAppService_PublishProfile }}
 
   build_and_deploy_front:
     runs-on: ubuntu-latest
@@ -66,11 +74,11 @@ jobs:
         run: npm run build
         working-directory: ./Frontend
 
-      - name: Deploy to Azure Web App
-        uses: Azure/static-web-apps-deploy@v1
-        with:
-          azure_static_web_apps_api_token: ${{ secrets.APP_FRONTEND_TOKEN }}
-          action: "upload"
-          app_location: "./Frontend"
-          output_location: "./dist"
+      # - name: Deploy to Azure Web App
+      #   uses: Azure/static-web-apps-deploy@v1
+      #   with:
+      #     azure_static_web_apps_api_token: ${{ secrets.APP_FRONTEND_TOKEN }}
+      #     action: "upload"
+      #     app_location: "./Frontend"
+      #     output_location: "./dist"
   
