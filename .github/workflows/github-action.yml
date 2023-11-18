@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_WEBAPP_PACKAGE_PATH: "./Back-Proyecto/publish"
+  AZURE_WEBAPP_PACKAGE_PATH: "publish"
 
 jobs:
   build_and_deploy_back:
@@ -35,21 +35,13 @@ jobs:
         run: dotnet publish ./Back-Proyecto.sln --configuration Release --no-build --output './publish'
         working-directory: ./Back-Proyecto
 
-      - name: List contents of the publish directory
-        run: ls -R ./publish
-        working-directory: ./Back-Proyecto
-
-      - name: List contents of the dist directory
-        run: ls -R ./dist
-        working-directory: ./Back-Proyecto
-
-      # - name: Deploy to Azure Web App
-      #   id: deploy-to-webapp
-      #   uses: azure/webapps-deploy@v2
-      #   with:
-      #     app-name: ${{ env.API_NAME }}
-      #     package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
-      #     publish-profile: ${{ secrets.AzureAppService_PublishProfile }}
+      - name: Deploy to Azure Web App
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ env.API_NAME }}
+          package: ./Back-Proyecto/${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+          publish-profile: ${{ secrets.AzureAppService_PublishProfile }}
 
   build_and_deploy_front:
     runs-on: ubuntu-latest
