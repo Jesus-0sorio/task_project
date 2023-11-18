@@ -12,7 +12,7 @@ env:
   AZURE_WEBAPP_PACKAGE_PATH: "./publish"
 
 jobs:
-  build-net-app:
+  build_and_deploy_back:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,10 +22,13 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '6.0.x'
-          include-prerelease: true
+
+      - name: Restore
+        run: dotnet restore ./Back-Proyecto.sln
+        working-directory: ./Back-Proyecto
 
       - name: Build with dotnet
-        run: dotnet build --configuration Release
+        run: dotnet build ./Back-Proyecto.sln --configuration Release --no-restore
         working-directory: ./Back-Proyecto
 
       - name: Publish
@@ -36,9 +39,10 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'api-task-project'
-          package: .
+          app-name: ${{ env.API_NAME }}
           publish-profile: ${{ secrets.AzureAppService_PublishProfile }}
+          package: "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}"
+          action: "deploy"
 
   build_and_deploy_front:
     runs-on: ubuntu-latest
