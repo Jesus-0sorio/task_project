@@ -70,6 +70,6 @@ jobs:
         uses: Azure/webapps-deploy@v2
         with:
           app-name: "front-task-app"
-          package: ./dist
+          package: ./Frontend/dist
           publish-profile: ${{ secrets.APP_FRONTEND_TOKEN }}
   
