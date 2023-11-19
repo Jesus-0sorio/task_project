@@ -10,6 +10,8 @@ export const assignmentsService = {
   },
 
   create: async (data) => {
+
+    console.log(BASE_URL);
     const response = await api.post(BASE_URL, {
       ...data,
       userid: USER_ID,
