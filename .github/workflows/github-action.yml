@@ -33,10 +33,8 @@ jobs:
         working-directory: ./Back-Proyecto
 
       - name: ls
+        working-directory: ${{env.DOTNET_ROOT}}/myapp
         run: ls
-
-      - name: ls
-        run: ls -R
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
