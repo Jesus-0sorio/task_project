@@ -36,36 +36,29 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: .net-app
-          path: ./Back-Proyecto/${{env.DOTNET_ROOT}}/myapp
-      
-      - name: ls
-        run: ls -R
-        working-directory: ./Back-Proyecto
+          path: ${{env.DOTNET_ROOT}}/myapp
 
-      - name: ls directorrry
-        run: ls -R
-
-  # deploy:
-  #   runs-on: ubuntu-latest
-  #   needs: build
-  #   environment:
-  #     name: 'production'
-  #     url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+  deploy_back:
+    runs-on: ubuntu-latest
+    needs: build_back
+    environment:
+      name: 'development'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     
-  #   steps:
-  #     - name: Download artifact from build job
-  #       uses: actions/download-artifact@v3
-  #       with:
-  #         name: .net-app
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v3
+        with:
+          name: .net-app
       
-  #     - name: Deploy to Azure Web App
-  #       id: deploy-to-webapp
-  #       uses: azure/webapps-deploy@v2
-  #       with:
-  #         app-name: 'api-task-project'
-  #         slot-name: 'production'
-  #         package: .
-  #         publish-profile: ${{ secrets.AzureAppService_PublishProfile_d71cb3a2bd01487bb27e31d483a3ba3a }}
+      - name: Deploy to Azure Web App
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'api-task-project'
+          slot-name: 'development'
+          package: .
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
 
   # build_and_deploy_front:
   #   runs-on: ubuntu-latest
