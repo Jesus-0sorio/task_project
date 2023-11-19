@@ -10,8 +10,6 @@ export const assignmentsService = {
   },
 
   create: async (data) => {
-    // eslint-disable-next-line no-console
-    console.log(BASE_URL);
     const response = await api.post(BASE_URL, {
       ...data,
       userid: USER_ID,
