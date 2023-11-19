@@ -67,9 +67,10 @@ jobs:
         working-directory: ./Frontend
 
       - name: Deploy to Azure Web App
-        uses: Azure/webapps-deploy@v2
+        uses: Azure/static-web-apps-deploy@v1
         with:
-          app-name: "front-task-app"
-          package: ./Frontend/dist
-          publish-profile: ${{ secrets.APP_FRONTEND_TOKEN }}
+          azure_static_web_apps_api_token: ${{ secrets.APP_FRONTEND_TOKEN }}
+          action: "upload"
+          app_location: "./Frontend"
+          output_location: "./dist"
   
