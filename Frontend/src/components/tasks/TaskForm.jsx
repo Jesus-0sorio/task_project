@@ -121,7 +121,7 @@ export function TaskForm({ isEdited, oldTask }) {
       <div className="w-64">
         <button
           type="submit"
-          onClick={isEdited ? handleEdit : handleSubmit}
+          onClick={!isEdited ? handleEdit : handleSubmit}
           className="bg-base w-full hover:bg-base text-white py-2 px-4 rounded"
         >
           Guardar
