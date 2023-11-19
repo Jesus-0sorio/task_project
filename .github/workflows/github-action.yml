@@ -74,6 +74,6 @@ jobs:
           app_location: "./Frontend"
           output_location: "./dist"
         env:
-          VITE_BASE_URL: ${{ env.VITE_BASE_URL }}
+          VITE_BASE_URL: ${{ secrets.VITE_BASE_URL }}
         
   
