@@ -32,6 +32,12 @@ jobs:
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
         working-directory: ./Back-Proyecto
 
+      - name: ls
+        run: ls
+
+      - name: ls
+        run: ls -R
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
