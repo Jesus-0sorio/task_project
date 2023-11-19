@@ -42,6 +42,8 @@ jobs:
           app-name: ${{ env.API_NAME }}
           package: .
           publish-profile: ${{ secrets.AzureAppService_PublishProfile }}
+        env:
+          DATABASE_CONNECTION: ${{ secrets.DATABASE_CONNECTION }}
 
   build_and_deploy_front:
     runs-on: ubuntu-latest
