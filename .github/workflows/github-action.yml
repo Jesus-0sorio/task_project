@@ -110,7 +110,7 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.APP_FRONTEND_TOKEN }}
           action: "upload"
-          app_location: "./Frontend"
+          app_location: .
           output_location: "./dist"
         env:
           VITE_BASE_URL: ${{ secrets.VITE_BASE_URL }}
