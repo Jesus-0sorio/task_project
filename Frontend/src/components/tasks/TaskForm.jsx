@@ -10,7 +10,7 @@ export function TaskForm({ isEdited, oldTask }) {
   const [description, setDescription] = useState('');
   const [priority, setPriority] = useState('Media');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.stopPropagation();
     e.preventDefault();
     const task = {
@@ -19,14 +19,16 @@ export function TaskForm({ isEdited, oldTask }) {
       priority,
     };
 
-    assignmentsService.create(task);
-    setTitle('');
-    setDescription('');
-    setPriority('Media');
-    window.location.reload();
+    const data = await assignmentsService.create(task);
+    if (data) {
+      setTitle('');
+      setDescription('');
+      setPriority('Media');
+      window.location.reload();
+    }
   };
 
-  const handleEdit = (e) => {
+  const handleEdit = async (e) => {
     e.stopPropagation();
     e.preventDefault();
     const task = {
@@ -36,11 +38,13 @@ export function TaskForm({ isEdited, oldTask }) {
       priority,
     };
 
-    assignmentsService.update(task.id, task);
-    setTitle('');
-    setDescription('');
-    setPriority('Media');
-    window.location.reload();
+    const data = await assignmentsService.update(task.id, task);
+    if (data) {
+      setTitle('');
+      setDescription('');
+      setPriority('Media');
+      window.location.reload();
+    }
   };
 
   useEffect(
