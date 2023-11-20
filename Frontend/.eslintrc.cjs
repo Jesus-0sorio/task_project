@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+
 module.exports = {
   env: {
     browser: true,
@@ -24,5 +27,7 @@ module.exports = {
   rules: {
     'import/prefer-default-export': 'off',
     'no-unused-expressions': 'off',
+    'jsx-a11y/no-static-element-interactions': 0,
+    'jsx-a11y/click-events-have-key-events': 0,
   },
 };

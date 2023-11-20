@@ -10,7 +10,7 @@ export function TaskForm({ isEdited, oldTask }) {
   const [description, setDescription] = useState('');
   const [priority, setPriority] = useState('Media');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.stopPropagation();
     e.preventDefault();
     const task = {
@@ -19,14 +19,16 @@ export function TaskForm({ isEdited, oldTask }) {
       priority,
     };
 
-    assignmentsService.create(task);
-    setTitle('');
-    setDescription('');
-    setPriority('Media');
-    window.location.reload();
+    const data = await assignmentsService.create(task);
+    if (data) {
+      setTitle('');
+      setDescription('');
+      setPriority('Media');
+      window.location.reload();
+    }
   };
 
-  const handleEdit = (e) => {
+  const handleEdit = async (e) => {
     e.stopPropagation();
     e.preventDefault();
     const task = {
@@ -36,11 +38,13 @@ export function TaskForm({ isEdited, oldTask }) {
       priority,
     };
 
-    assignmentsService.update(task.id, task);
-    setTitle('');
-    setDescription('');
-    setPriority('Media');
-    window.location.reload();
+    const data = await assignmentsService.update(task.id, task);
+    if (data) {
+      setTitle('');
+      setDescription('');
+      setPriority('Media');
+      window.location.reload();
+    }
   };
 
   useEffect(
@@ -121,7 +125,7 @@ export function TaskForm({ isEdited, oldTask }) {
       <div className="w-64">
         <button
           type="submit"
-          onClick={isEdited ? handleEdit : handleSubmit}
+          onClick={!isEdited ? handleEdit : handleSubmit}
           className="bg-base w-full hover:bg-base text-white py-2 px-4 rounded"
         >
           Guardar
@@ -137,4 +141,5 @@ TaskForm.propTypes = {
     description: PropTypes.string,
     priority: PropTypes.string,
   }).isRequired,
+  isEdited: PropTypes.bool.isRequired,
 };
