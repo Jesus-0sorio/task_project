@@ -8,7 +8,7 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 // Conexion a la BD 
 builder.Services.AddDbContext<MyDbContext>(options =>
-options.UseSqlServer("name=ConnectionStrings:Connection"));
+options.UseSqlServer(Environment.GetEnvironmentVariable("DATABASE_CONNECTION")));
 
 // Add services to the container.
 builder.Services.AddTransient<RegistrationService, RegistrationService>();
@@ -49,11 +49,11 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+// if (app.Environment.IsDevelopment())
+// {
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+// }
 
 app.UseHttpsRedirection();
 //habilitar los nuevos cors
